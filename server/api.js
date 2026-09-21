@@ -1,9 +1,10 @@
-// 对外动作集合：页面只经过这一层，球队、场地、赛程与积分表各自管好自己的校验
+// 对外动作集合：页面只经过这一层，球队、场地、赛程、淘汰赛与积分表各自管好自己的校验
 const { ApiError, pickText } = require('./errors');
 const { load } = require('./store');
 const teams = require('./teams');
 const venues = require('./venues');
 const matches = require('./matches');
+const knockout = require('./knockout');
 const { computeTable } = require('./standings');
 
 function readQuery(query, name) {
@@ -57,4 +58,5 @@ module.exports = {
   ...teams,
   ...venues,
   ...matches,
+  ...knockout,
 };

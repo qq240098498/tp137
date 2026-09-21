@@ -120,6 +120,27 @@ app.get('/api/standings', (req, res) => {
   res.json(api.computeTable({ keyword: api.readQuery(req.query, 'keyword') }));
 });
 
+// 淘汰赛签表：生成、查看、逐场登记比分推进晋级
+app.get('/api/knockout', (_req, res) => {
+  res.json(api.getBracket());
+});
+
+app.post('/api/knockout/generate', (req, res) => {
+  try {
+    res.status(201).json(api.generateBracket(req.body || {}));
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.post('/api/knockout/matches/:id/result', (req, res) => {
+  try {
+    res.json(api.recordKnockoutResult(req.params.id, req.body || {}));
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
 app.use('/api', (_req, res) => {
   res.status(404).json({ error: { code: 'API_NOT_FOUND', message: '接口不存在', field: '' } });
 });

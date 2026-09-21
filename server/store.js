@@ -11,21 +11,23 @@ const MAX_SHORT_NAME = 4;
 const MAX_VENUE_NAME = 30;
 const MAX_NOTE = 200;
 const MAX_TEAMS = 12;
+const MAX_GROUP_NAME = 8;
 const STATUS_POOL = ['待赛', '已赛', '延期', '取消'];
+const TEAM_STATUS_POOL = ['参赛', '退赛'];
 
-// 初始数据：八支球队、四个场地（其中两支球队共用中立体育场）、七轮单循环共二十八场，
-// 前三轮已经打完并记了比分，第四轮有一场延期，其余待赛
+// 初始数据：八支球队、六个场地（其中三支球队共用中立体育场）、七轮单循环共二十八场，
+// 前三轮已经打完并记了比分，第四轮有一场延期，其余待赛；球队带小组，供淘汰赛抽签做同组回避
 function seedData() {
   const at = '2026-02-20T02:00:00.000Z';
   const teams = [
-    { id: 'team-1001', name: '江城铁马', shortName: 'JCTM', city: '江城', venueId: 'venue-2001', seedRank: 1, status: '参赛', note: '上赛季冠军', createdAt: at, updatedAt: at },
-    { id: 'team-1002', name: '海陵海燕', shortName: 'HLHY', city: '海陵', venueId: 'venue-2002', seedRank: 2, status: '参赛', note: '', createdAt: at, updatedAt: at },
-    { id: 'team-1003', name: '云岭苍狼', shortName: 'YLCW', city: '云岭', venueId: 'venue-2003', seedRank: 3, status: '参赛', note: '', createdAt: at, updatedAt: at },
-    { id: 'team-1004', name: '平原飞驰', shortName: 'PYFC', city: '平原', venueId: 'venue-2004', seedRank: 4, status: '参赛', note: '', createdAt: at, updatedAt: at },
-    { id: 'team-1005', name: '沙洲锚队', shortName: 'SZMD', city: '沙洲', venueId: 'venue-2004', seedRank: 5, status: '参赛', note: '与平原飞驰共用中立体育场', createdAt: at, updatedAt: at },
-    { id: 'team-1006', name: '白鹿白鹭', shortName: 'BLBL', city: '白鹿', venueId: 'venue-2004', seedRank: 6, status: '参赛', note: '与平原飞驰共用中立体育场', createdAt: at, updatedAt: at },
-    { id: 'team-1007', name: '青峰青松', shortName: 'QFQS', city: '青峰', venueId: 'venue-2005', seedRank: 7, status: '参赛', note: '', createdAt: at, updatedAt: at },
-    { id: 'team-1008', name: '洛水洛神', shortName: 'LSLS', city: '洛水', venueId: 'venue-2006', seedRank: 8, status: '参赛', note: '', createdAt: at, updatedAt: at },
+    { id: 'team-1001', name: '江城铁马', shortName: 'JCTM', city: '江城', venueId: 'venue-2001', seedRank: 1, groupName: 'A组', status: '参赛', note: '上赛季冠军', createdAt: at, updatedAt: at },
+    { id: 'team-1002', name: '海陵海燕', shortName: 'HLHY', city: '海陵', venueId: 'venue-2002', seedRank: 2, groupName: 'A组', status: '参赛', note: '', createdAt: at, updatedAt: at },
+    { id: 'team-1003', name: '云岭苍狼', shortName: 'YLCW', city: '云岭', venueId: 'venue-2003', seedRank: 3, groupName: 'A组', status: '参赛', note: '', createdAt: at, updatedAt: at },
+    { id: 'team-1004', name: '平原飞驰', shortName: 'PYFC', city: '平原', venueId: 'venue-2004', seedRank: 4, groupName: 'B组', status: '参赛', note: '', createdAt: at, updatedAt: at },
+    { id: 'team-1005', name: '沙洲锚队', shortName: 'SZMD', city: '沙洲', venueId: 'venue-2004', seedRank: 5, groupName: 'B组', status: '参赛', note: '与平原飞驰共用中立体育场', createdAt: at, updatedAt: at },
+    { id: 'team-1006', name: '白鹿白鹭', shortName: 'BLBL', city: '白鹿', venueId: 'venue-2004', seedRank: 6, groupName: 'A组', status: '参赛', note: '与平原飞驰共用中立体育场', createdAt: at, updatedAt: at },
+    { id: 'team-1007', name: '青峰青松', shortName: 'QFQS', city: '青峰', venueId: 'venue-2005', seedRank: 7, groupName: 'B组', status: '参赛', note: '', createdAt: at, updatedAt: at },
+    { id: 'team-1008', name: '洛水洛神', shortName: 'LSLS', city: '洛水', venueId: 'venue-2006', seedRank: 8, groupName: 'B组', status: '参赛', note: '', createdAt: at, updatedAt: at },
   ];
 
   const venues = [
@@ -85,6 +87,7 @@ function seedData() {
     teams,
     venues,
     matches,
+    knockout: null,
   };
 }
 
@@ -142,7 +145,8 @@ function normalize(raw) {
       city: typeof item.city === 'string' ? item.city.trim() : '',
       venueId: venueIds.has(item.venueId) ? item.venueId : '',
       seedRank: Number.isInteger(Number(item.seedRank)) ? Number(item.seedRank) : index + 1,
-      status: STATUS_POOL.includes(item.status) ? item.status : '参赛',
+      groupName: typeof item.groupName === 'string' ? item.groupName.trim() : '',
+      status: TEAM_STATUS_POOL.includes(item.status) ? item.status : '参赛',
       note: typeof item.note === 'string' ? item.note : '',
       createdAt: typeof item.createdAt === 'string' ? item.createdAt : new Date().toISOString(),
       updatedAt: typeof item.updatedAt === 'string' ? item.updatedAt : new Date().toISOString(),
@@ -177,7 +181,114 @@ function normalize(raw) {
     });
   });
 
-  return { meta, teams, venues, matches };
+  return { meta, teams, venues, matches, knockout: normalizeKnockout(source.knockout) };
+}
+
+// 淘汰赛签表：结构不对就丢，引用对不上的来源与去向剪掉，其余原样保留
+function normalizeKnockout(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+
+  const entries = [];
+  const seedSet = new Set();
+  (Array.isArray(raw.entries) ? raw.entries : []).forEach((item) => {
+    if (!item || typeof item !== 'object') return;
+    const seed = Number(item.seed);
+    const teamId = typeof item.teamId === 'string' ? item.teamId : '';
+    if (!Number.isInteger(seed) || seed < 1 || !teamId || seedSet.has(seed)) return;
+    seedSet.add(seed);
+    entries.push({
+      seed,
+      teamId,
+      name: typeof item.name === 'string' ? item.name : '',
+      shortName: typeof item.shortName === 'string' ? item.shortName : '',
+      seedRank: Number.isInteger(Number(item.seedRank)) ? Number(item.seedRank) : seed,
+      groupName: typeof item.groupName === 'string' ? item.groupName : '',
+    });
+  });
+  entries.sort((a, b) => a.seed - b.seed);
+  if (entries.length < 2) return null;
+
+  const normSource = (source) => {
+    if (!source || typeof source !== 'object') return null;
+    if (source.type === 'seed' && seedSet.has(Number(source.seed))) return { type: 'seed', seed: Number(source.seed) };
+    if (source.type === 'match' && typeof source.matchId === 'string' && source.matchId) return { type: 'match', matchId: source.matchId };
+    return null;
+  };
+  const normGoals = (value) => (Number.isInteger(Number(value)) ? Number(value) : null);
+  const normPair = (pair) => (pair && typeof pair === 'object'
+    && Number.isInteger(Number(pair.home)) && Number.isInteger(Number(pair.away))
+    ? { home: Number(pair.home), away: Number(pair.away) } : null);
+
+  const matches = [];
+  const ids = new Set();
+  (Array.isArray(raw.matches) ? raw.matches : []).forEach((item) => {
+    if (!item || typeof item !== 'object') return;
+    const id = typeof item.id === 'string' ? item.id : '';
+    if (!id || ids.has(id)) return;
+    const homeSource = normSource(item.homeSource);
+    const awaySource = normSource(item.awaySource);
+    if (!homeSource || !awaySource) return;
+    ids.add(id);
+    const status = item.status === '已赛' ? '已赛' : '待赛';
+    matches.push({
+      id,
+      code: typeof item.code === 'string' && item.code ? item.code : id,
+      round: Number.isInteger(Number(item.round)) ? Number(item.round) : 1,
+      roundName: typeof item.roundName === 'string' ? item.roundName : '',
+      index: Number.isInteger(Number(item.index)) ? Number(item.index) : 1,
+      homeSource,
+      awaySource,
+      homeTeamId: typeof item.homeTeamId === 'string' ? item.homeTeamId : '',
+      awayTeamId: typeof item.awayTeamId === 'string' ? item.awayTeamId : '',
+      next: item.next && typeof item.next === 'object' && typeof item.next.matchId === 'string'
+        && ['home', 'away'].includes(item.next.side)
+        ? { matchId: item.next.matchId, side: item.next.side } : null,
+      status,
+      homeGoals: status === '已赛' ? normGoals(item.homeGoals) : null,
+      awayGoals: status === '已赛' ? normGoals(item.awayGoals) : null,
+      extra: status === '已赛' ? normPair(item.extra) : null,
+      penalties: status === '已赛' ? normPair(item.penalties) : null,
+      decidedBy: status === '已赛' && ['常规时间', '加时', '点球'].includes(item.decidedBy) ? item.decidedBy : '',
+      winnerTeamId: status === '已赛' && typeof item.winnerTeamId === 'string' ? item.winnerTeamId : '',
+      createdAt: typeof item.createdAt === 'string' ? item.createdAt : new Date().toISOString(),
+      updatedAt: typeof item.updatedAt === 'string' ? item.updatedAt : new Date().toISOString(),
+    });
+  });
+  if (!matches.length) return null;
+
+  // 引用不存在场次的来源与去向一律剪掉
+  const validIds = new Set(matches.map((item) => item.id));
+  const kept = matches.filter((item) => (item.homeSource.type !== 'match' || validIds.has(item.homeSource.matchId))
+    && (item.awaySource.type !== 'match' || validIds.has(item.awaySource.matchId)));
+  kept.forEach((item) => { if (item.next && !validIds.has(item.next.matchId)) item.next = null; });
+  if (!kept.length) return null;
+
+  const advancements = (Array.isArray(raw.advancements) ? raw.advancements : [])
+    .filter((item) => item && typeof item === 'object' && typeof item.text === 'string' && item.text)
+    .map((item, index) => ({
+      id: typeof item.id === 'string' && item.id ? item.id : `log-${index + 1}`,
+      type: ['advance', 'bye', 'champion'].includes(item.type) ? item.type : 'advance',
+      matchId: typeof item.matchId === 'string' ? item.matchId : '',
+      text: item.text,
+      at: typeof item.at === 'string' ? item.at : '',
+    }))
+    .slice(-50);
+
+  return {
+    id: typeof raw.id === 'string' && raw.id ? raw.id : 'knockout',
+    name: typeof raw.name === 'string' && raw.name ? raw.name : '淘汰赛签表',
+    teamCount: entries.length,
+    bracketSize: Number.isInteger(Number(raw.bracketSize)) ? Number(raw.bracketSize) : 2 ** Math.ceil(Math.log2(entries.length)),
+    entries,
+    matches: kept,
+    violations: (Array.isArray(raw.violations) ? raw.violations : [])
+      .filter((item) => item && typeof item === 'object' && typeof item.rule === 'string' && item.rule)
+      .map((item) => ({ rule: item.rule, detail: typeof item.detail === 'string' ? item.detail : '' })),
+    adjustments: (Array.isArray(raw.adjustments) ? raw.adjustments : []).filter((item) => typeof item === 'string' && item),
+    advancements,
+    createdAt: typeof raw.createdAt === 'string' ? raw.createdAt : new Date().toISOString(),
+    updatedAt: typeof raw.updatedAt === 'string' ? raw.updatedAt : new Date().toISOString(),
+  };
 }
 
 // 读取数据文件：文件缺失或内容损坏时回落到初始数据并立刻补写
@@ -211,7 +322,8 @@ module.exports = {
   MAX_VENUE_NAME,
   MAX_NOTE,
   MAX_TEAMS,
+  MAX_GROUP_NAME,
   MATCH_STATUS: ['待赛', '已赛', '延期', '取消'],
-  TEAM_STATUS: ['参赛', '退赛'],
+  TEAM_STATUS: TEAM_STATUS_POOL,
   DATA_FILE,
 };

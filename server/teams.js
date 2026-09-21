@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { load, save, MAX_TEAM_NAME, MAX_SHORT_NAME, MAX_NOTE, MAX_TEAMS, TEAM_STATUS } = require('./store');
+const { load, save, MAX_TEAM_NAME, MAX_SHORT_NAME, MAX_NOTE, MAX_TEAMS, MAX_GROUP_NAME, TEAM_STATUS } = require('./store');
 const { ApiError, pickText, isBlank } = require('./errors');
 
 const SHORT_PATTERN = /^[A-Z]{2,4}$/;
@@ -26,6 +26,11 @@ function validatePayload(input, data, selfId) {
   const city = pickText(source.city);
   if (!city) throw new ApiError(400, 'CITY_REQUIRED', '请填写所属城市', 'city');
 
+  const groupName = pickText(source.groupName);
+  if (groupName.length > MAX_GROUP_NAME) {
+    throw new ApiError(400, 'GROUP_TOO_LONG', `小组名不能超过 ${MAX_GROUP_NAME} 个字，例如 A组`, 'groupName');
+  }
+
   const venueId = pickText(source.venueId);
   if (!venueId) throw new ApiError(400, 'VENUE_REQUIRED', '请指定主场场地', 'venueId');
   if (!data.venues.some((item) => item.id === venueId)) {
@@ -49,7 +54,7 @@ function validatePayload(input, data, selfId) {
     throw new ApiError(400, 'NOTE_TOO_LONG', `备注不能超过 ${MAX_NOTE} 个字`, 'note');
   }
 
-  return { name, shortName, city, venueId, seedRank, status, note: pickText(source.note) };
+  return { name, shortName, city, venueId, seedRank, groupName, status, note: pickText(source.note) };
 }
 
 function listTeams(options) {

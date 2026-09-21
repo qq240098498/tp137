@@ -1,0 +1,903 @@
+{
+  "meta": {
+    "season": "2026 春季联赛",
+    "points": {
+      "win": 3,
+      "draw": 1,
+      "loss": 0
+    },
+    "updatedAt": "2026-02-20T02:00:00.000Z"
+  },
+  "teams": [
+    {
+      "id": "team-1001",
+      "name": "江城铁马",
+      "shortName": "JCTM",
+      "city": "江城",
+      "venueId": "venue-2001",
+      "seedRank": 1,
+      "groupName": "A组",
+      "status": "参赛",
+      "note": "上赛季冠军",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1002",
+      "name": "海陵海燕",
+      "shortName": "HLHY",
+      "city": "海陵",
+      "venueId": "venue-2002",
+      "seedRank": 2,
+      "groupName": "A组",
+      "status": "参赛",
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1003",
+      "name": "云岭苍狼",
+      "shortName": "YLCW",
+      "city": "云岭",
+      "venueId": "venue-2003",
+      "seedRank": 3,
+      "groupName": "A组",
+      "status": "参赛",
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1004",
+      "name": "平原飞驰",
+      "shortName": "PYFC",
+      "city": "平原",
+      "venueId": "venue-2004",
+      "seedRank": 4,
+      "groupName": "B组",
+      "status": "参赛",
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1005",
+      "name": "沙洲锚队",
+      "shortName": "SZMD",
+      "city": "沙洲",
+      "venueId": "venue-2004",
+      "seedRank": 5,
+      "groupName": "B组",
+      "status": "参赛",
+      "note": "与平原飞驰共用中立体育场",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1006",
+      "name": "白鹿白鹭",
+      "shortName": "BLBL",
+      "city": "白鹿",
+      "venueId": "venue-2004",
+      "seedRank": 6,
+      "groupName": "A组",
+      "status": "参赛",
+      "note": "与平原飞驰共用中立体育场",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1007",
+      "name": "青峰青松",
+      "shortName": "QFQS",
+      "city": "青峰",
+      "venueId": "venue-2005",
+      "seedRank": 7,
+      "groupName": "B组",
+      "status": "参赛",
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "team-1008",
+      "name": "洛水洛神",
+      "shortName": "LSLS",
+      "city": "洛水",
+      "venueId": "venue-2006",
+      "seedRank": 8,
+      "groupName": "B组",
+      "status": "参赛",
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    }
+  ],
+  "venues": [
+    {
+      "id": "venue-2001",
+      "name": "江城体育中心",
+      "city": "江城",
+      "capacity": 32000,
+      "weekdays": [
+        6
+      ],
+      "note": "主场馆",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "venue-2002",
+      "name": "海陵湾球场",
+      "city": "海陵",
+      "capacity": 18000,
+      "weekdays": [
+        6
+      ],
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "venue-2003",
+      "name": "云岭高地",
+      "city": "云岭",
+      "capacity": 12000,
+      "weekdays": [
+        6,
+        0
+      ],
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "venue-2004",
+      "name": "中立体育场",
+      "city": "中立",
+      "capacity": 24000,
+      "weekdays": [
+        6,
+        0
+      ],
+      "note": "平原、沙洲、白鹿三家共用",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "venue-2005",
+      "name": "青峰山球场",
+      "city": "青峰",
+      "capacity": 9000,
+      "weekdays": [
+        0
+      ],
+      "note": "只有周日可用",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "venue-2006",
+      "name": "洛水古渡球场",
+      "city": "洛水",
+      "capacity": 8000,
+      "weekdays": [
+        6
+      ],
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    }
+  ],
+  "matches": [
+    {
+      "id": "match-3001-01",
+      "round": 1,
+      "date": "2026-03-07",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1008",
+      "status": "已赛",
+      "homeGoals": 2,
+      "awayGoals": 0,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-02",
+      "round": 1,
+      "date": "2026-03-07",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1007",
+      "awayTeamId": "team-1002",
+      "status": "已赛",
+      "homeGoals": 1,
+      "awayGoals": 1,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-03",
+      "round": 1,
+      "date": "2026-03-07",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1003",
+      "awayTeamId": "team-1006",
+      "status": "已赛",
+      "homeGoals": 3,
+      "awayGoals": 1,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-04",
+      "round": 1,
+      "date": "2026-03-07",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1005",
+      "awayTeamId": "team-1004",
+      "status": "已赛",
+      "homeGoals": 0,
+      "awayGoals": 2,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-05",
+      "round": 2,
+      "date": "2026-03-14",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1007",
+      "status": "已赛",
+      "homeGoals": 1,
+      "awayGoals": 2,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-06",
+      "round": 2,
+      "date": "2026-03-14",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1006",
+      "awayTeamId": "team-1008",
+      "status": "已赛",
+      "homeGoals": 2,
+      "awayGoals": 2,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-07",
+      "round": 2,
+      "date": "2026-03-14",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1002",
+      "awayTeamId": "team-1005",
+      "status": "已赛",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-08",
+      "round": 2,
+      "date": "2026-03-14",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1004",
+      "awayTeamId": "team-1003",
+      "status": "已赛",
+      "homeGoals": 4,
+      "awayGoals": 1,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-09",
+      "round": 3,
+      "date": "2026-03-21",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1006",
+      "status": "已赛",
+      "homeGoals": 2,
+      "awayGoals": 1,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-10",
+      "round": 3,
+      "date": "2026-03-21",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1005",
+      "awayTeamId": "team-1007",
+      "status": "已赛",
+      "homeGoals": 1,
+      "awayGoals": 0,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-11",
+      "round": 3,
+      "date": "2026-03-21",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1008",
+      "awayTeamId": "team-1004",
+      "status": "已赛",
+      "homeGoals": 1,
+      "awayGoals": 3,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-12",
+      "round": 3,
+      "date": "2026-03-21",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1003",
+      "awayTeamId": "team-1002",
+      "status": "已赛",
+      "homeGoals": 2,
+      "awayGoals": 0,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-13",
+      "round": 4,
+      "date": "2026-03-28",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1005",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-14",
+      "round": 4,
+      "date": "2026-03-28",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1004",
+      "awayTeamId": "team-1006",
+      "status": "延期",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "主队场地检修，日期待定",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-15",
+      "round": 4,
+      "date": "2026-03-28",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1007",
+      "awayTeamId": "team-1003",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-16",
+      "round": 4,
+      "date": "2026-03-28",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1002",
+      "awayTeamId": "team-1008",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-17",
+      "round": 5,
+      "date": "2026-03-35",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1004",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-18",
+      "round": 5,
+      "date": "2026-03-35",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1003",
+      "awayTeamId": "team-1005",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-19",
+      "round": 5,
+      "date": "2026-03-35",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1006",
+      "awayTeamId": "team-1002",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-20",
+      "round": 5,
+      "date": "2026-03-35",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1008",
+      "awayTeamId": "team-1007",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-21",
+      "round": 6,
+      "date": "2026-03-42",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1003",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-22",
+      "round": 6,
+      "date": "2026-03-42",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1002",
+      "awayTeamId": "team-1004",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-23",
+      "round": 6,
+      "date": "2026-03-42",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1005",
+      "awayTeamId": "team-1008",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-24",
+      "round": 6,
+      "date": "2026-03-42",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1007",
+      "awayTeamId": "team-1006",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-25",
+      "round": 7,
+      "date": "2026-03-49",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1001",
+      "awayTeamId": "team-1002",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-26",
+      "round": 7,
+      "date": "2026-03-49",
+      "kickoff": "19:30",
+      "venueId": "",
+      "homeTeamId": "team-1008",
+      "awayTeamId": "team-1003",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-27",
+      "round": 7,
+      "date": "2026-03-49",
+      "kickoff": "15:30",
+      "venueId": "",
+      "homeTeamId": "team-1004",
+      "awayTeamId": "team-1007",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    },
+    {
+      "id": "match-3001-28",
+      "round": 7,
+      "date": "2026-03-49",
+      "kickoff": "19:30",
+      "venueId": "venue-2004",
+      "homeTeamId": "team-1006",
+      "awayTeamId": "team-1005",
+      "status": "待赛",
+      "homeGoals": null,
+      "awayGoals": null,
+      "note": "",
+      "createdAt": "2026-02-20T02:00:00.000Z",
+      "updatedAt": "2026-02-20T02:00:00.000Z"
+    }
+  ],
+  "knockout": {
+    "id": "knockout-2872d8b6-85d3-403d-bd52-a57968959f46",
+    "name": "淘汰赛签表",
+    "teamCount": 8,
+    "bracketSize": 8,
+    "entries": [
+      {
+        "seed": 1,
+        "teamId": "team-1001",
+        "name": "江城铁马",
+        "shortName": "JCTM",
+        "seedRank": 1,
+        "groupName": "A组"
+      },
+      {
+        "seed": 2,
+        "teamId": "team-1002",
+        "name": "海陵海燕",
+        "shortName": "HLHY",
+        "seedRank": 2,
+        "groupName": "A组"
+      },
+      {
+        "seed": 3,
+        "teamId": "team-1003",
+        "name": "云岭苍狼",
+        "shortName": "YLCW",
+        "seedRank": 3,
+        "groupName": "A组"
+      },
+      {
+        "seed": 4,
+        "teamId": "team-1004",
+        "name": "平原飞驰",
+        "shortName": "PYFC",
+        "seedRank": 4,
+        "groupName": "B组"
+      },
+      {
+        "seed": 5,
+        "teamId": "team-1005",
+        "name": "沙洲锚队",
+        "shortName": "SZMD",
+        "seedRank": 5,
+        "groupName": "B组"
+      },
+      {
+        "seed": 6,
+        "teamId": "team-1006",
+        "name": "白鹿白鹭",
+        "shortName": "BLBL",
+        "seedRank": 6,
+        "groupName": "A组"
+      },
+      {
+        "seed": 7,
+        "teamId": "team-1007",
+        "name": "青峰青松",
+        "shortName": "QFQS",
+        "seedRank": 7,
+        "groupName": "B组"
+      },
+      {
+        "seed": 8,
+        "teamId": "team-1008",
+        "name": "洛水洛神",
+        "shortName": "LSLS",
+        "seedRank": 8,
+        "groupName": "B组"
+      }
+    ],
+    "matches": [
+      {
+        "id": "ko-r1-m1",
+        "code": "M1",
+        "round": 1,
+        "roundName": "1/4 决赛",
+        "index": 1,
+        "homeSource": {
+          "type": "seed",
+          "seed": 1
+        },
+        "awaySource": {
+          "type": "seed",
+          "seed": 8
+        },
+        "homeTeamId": "team-1001",
+        "awayTeamId": "team-1008",
+        "next": {
+          "matchId": "ko-r2-m1",
+          "side": "home"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r1-m2",
+        "code": "M2",
+        "round": 1,
+        "roundName": "1/4 决赛",
+        "index": 2,
+        "homeSource": {
+          "type": "seed",
+          "seed": 3
+        },
+        "awaySource": {
+          "type": "seed",
+          "seed": 5
+        },
+        "homeTeamId": "team-1003",
+        "awayTeamId": "team-1005",
+        "next": {
+          "matchId": "ko-r2-m1",
+          "side": "away"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r1-m3",
+        "code": "M3",
+        "round": 1,
+        "roundName": "1/4 决赛",
+        "index": 3,
+        "homeSource": {
+          "type": "seed",
+          "seed": 2
+        },
+        "awaySource": {
+          "type": "seed",
+          "seed": 7
+        },
+        "homeTeamId": "team-1002",
+        "awayTeamId": "team-1007",
+        "next": {
+          "matchId": "ko-r2-m2",
+          "side": "home"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r1-m4",
+        "code": "M4",
+        "round": 1,
+        "roundName": "1/4 决赛",
+        "index": 4,
+        "homeSource": {
+          "type": "seed",
+          "seed": 4
+        },
+        "awaySource": {
+          "type": "seed",
+          "seed": 6
+        },
+        "homeTeamId": "team-1004",
+        "awayTeamId": "team-1006",
+        "next": {
+          "matchId": "ko-r2-m2",
+          "side": "away"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r2-m1",
+        "code": "M5",
+        "round": 2,
+        "roundName": "半决赛",
+        "index": 1,
+        "homeSource": {
+          "type": "match",
+          "matchId": "ko-r1-m1"
+        },
+        "awaySource": {
+          "type": "match",
+          "matchId": "ko-r1-m2"
+        },
+        "homeTeamId": "",
+        "awayTeamId": "",
+        "next": {
+          "matchId": "ko-r3-m1",
+          "side": "home"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r2-m2",
+        "code": "M6",
+        "round": 2,
+        "roundName": "半决赛",
+        "index": 2,
+        "homeSource": {
+          "type": "match",
+          "matchId": "ko-r1-m3"
+        },
+        "awaySource": {
+          "type": "match",
+          "matchId": "ko-r1-m4"
+        },
+        "homeTeamId": "",
+        "awayTeamId": "",
+        "next": {
+          "matchId": "ko-r3-m1",
+          "side": "away"
+        },
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      },
+      {
+        "id": "ko-r3-m1",
+        "code": "M7",
+        "round": 3,
+        "roundName": "决赛",
+        "index": 1,
+        "homeSource": {
+          "type": "match",
+          "matchId": "ko-r2-m1"
+        },
+        "awaySource": {
+          "type": "match",
+          "matchId": "ko-r2-m2"
+        },
+        "homeTeamId": "",
+        "awayTeamId": "",
+        "next": null,
+        "status": "待赛",
+        "homeGoals": null,
+        "awayGoals": null,
+        "extra": null,
+        "penalties": null,
+        "decidedBy": "",
+        "winnerTeamId": "",
+        "createdAt": "2026-09-21T14:37:06.052Z",
+        "updatedAt": "2026-09-21T14:37:06.052Z"
+      }
+    ],
+    "violations": [],
+    "adjustments": [
+      "为避开同组首轮相遇，种子4 与 种子3 互换了签位"
+    ],
+    "advancements": [],
+    "createdAt": "2026-09-21T14:37:06.052Z",
+    "updatedAt": "2026-09-21T14:37:06.052Z"
+  }
+}
