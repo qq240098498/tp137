@@ -206,3 +206,101 @@ table.grid.standings td:nth-child(n+3) { font-family: Consolas, "Courier New", m
 }
 .toast.ok { background: var(--brand); }
 .toast.bad { background: var(--danger); }
+
+/* 淘汰赛签表 */
+.ko-scroll { overflow-x: auto; padding: 8px 4px 18px; }
+.bracket { display: flex; align-items: stretch; gap: 44px; min-width: max-content; padding: 4px 8px 4px 4px; }
+.ko-round { display: flex; flex-direction: column; justify-content: stretch; min-width: 232px; }
+.ko-round-head { font-size: 12.5px; color: var(--ink-soft); font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+.ko-round-head em { font-style: normal; font-weight: 400; font-size: 11px; }
+.ko-slots { flex: 1; display: flex; flex-direction: column; }
+.ko-slot { flex: 1; display: flex; align-items: center; position: relative; min-height: 96px; }
+.ko-match {
+  width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 11px;
+  padding: 8px 10px; display: flex; flex-direction: column; gap: 4px;
+  box-shadow: 0 1px 2px rgba(20, 30, 45, .05); transition: box-shadow .15s, border-color .15s;
+}
+.ko-match.flash { border-color: var(--amber); box-shadow: 0 0 0 3px var(--amber-soft); }
+.ko-match.is-done { border-color: #b9d9d4; }
+.ko-match.is-bye { background: #f7f9fb; }
+.ko-match.is-final { border-color: var(--amber); border-width: 1px; box-shadow: 0 2px 10px rgba(201, 130, 8, .12); }
+.ko-meta { display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--ink-soft); }
+.ko-meta .code { font-family: Consolas, monospace; font-weight: 600; }
+.ko-meta .spacer { margin-left: auto; }
+.ko-side { display: flex; align-items: center; gap: 6px; font-size: 12.5px; padding: 2px 0; }
+.ko-side .seed-tag {
+  flex: 0 0 auto; min-width: 34px; text-align: center; font-size: 10.5px; font-family: inherit;
+  border-radius: 6px; padding: 1px 4px; border: none;
+  background: #eef2f7; color: var(--ink-soft);
+}
+button.ko-side .seed-tag { cursor: pointer; }
+.ko-side .seed-tag.has-group { background: var(--brand-soft); color: var(--brand); }
+.ko-side .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ko-side .sc { font-family: Consolas, monospace; font-weight: 600; }
+.ko-side.win { color: var(--brand); font-weight: 600; }
+.ko-side.win .seed-tag { background: var(--brand); color: #fff; }
+.ko-side.bye .nm { color: #9aa7b3; font-style: italic; }
+.ko-side .wait-nm { color: #93a1af; font-size: 11.5px; }
+.ko-from { font-size: 10.5px; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 6px; }
+.ko-from button {
+  border: none; background: none; padding: 0; color: var(--brand); font: inherit; cursor: pointer;
+  text-decoration: underline dotted; text-underline-offset: 2px;
+}
+.ko-foot { display: flex; align-items: center; justify-content: space-between; gap: 6px; border-top: 1px dashed var(--line); padding-top: 5px; margin-top: 2px; }
+.ko-goto { font-size: 10.5px; color: var(--ink-soft); }
+.ko-goto b { color: var(--brand); font-weight: 600; }
+.ko-score-text { font-size: 11px; font-family: Consolas, monospace; color: var(--ink); }
+.ko-mini { padding: 3px 8px; font-size: 11px; }
+.ko-mini[disabled] { color: #a7b3bf; cursor: not-allowed; background: #f4f6f9; }
+.ko-note { font-size: 10.5px; color: var(--amber); }
+
+/* 签表连线：每根线就是一个绝对定位的细条，在对阵卡片之间拼成 ├─ 形 */
+.k-line { position: absolute; background: #b8c3ce; pointer-events: none; }
+.k-line-hl { left: -22px; top: 50%; width: 22px; height: 2px; }       /* 本场向左接上一条竖线 */
+.k-line-hr { right: -22px; top: 50%; width: 22px; height: 2px; }      /* 末轮之外：向右伸到间隙中间 */
+.k-line-vup { left: -22px; top: 25%; width: 2px; height: 25%; }       /* 竖线上半截（指向上半场的胜者） */
+.k-line-vdown { left: -22px; top: 50%; width: 2px; height: 25%; }     /* 竖线下半截（指向下半场的胜者） */
+
+.ko-rules { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.rule-line {
+  display: flex; gap: 8px; align-items: flex-start; border-radius: 10px; padding: 8px 12px;
+  font-size: 12.5px; border: 1px solid var(--line); background: var(--card);
+}
+.rule-line.ok { border-color: #b9d9d4; background: var(--brand-soft); }
+.rule-line.bad { border-color: #ecc6c4; background: var(--danger-soft); color: #8f2b27; }
+.rule-line .mark { flex: 0 0 auto; font-weight: 700; }
+
+.ko-champion {
+  display: none; align-items: center; gap: 12px; border-radius: var(--radius);
+  border: 1px solid #e7cf9f; background: linear-gradient(100deg, #fdf3e2, #fbeed2);
+  padding: 12px 18px; margin-bottom: 12px;
+}
+.ko-champion.show { display: flex; }
+.ko-champion .crown { font-size: 26px; }
+.ko-champion b { font-size: 17px; }
+.ko-champion .muted { font-size: 12px; }
+
+.ko-entrants { display: flex; flex-wrap: wrap; gap: 8px; }
+.ko-entrant {
+  display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px;
+  padding: 3px 12px 3px 6px; font-size: 12.5px; background: #fafbfd;
+}
+.ko-entrant .rank {
+  min-width: 22px; height: 22px; border-radius: 50%; background: var(--rail); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: Consolas, monospace;
+}
+.ko-entrant .grp {
+  font-size: 10px; border-radius: 6px; padding: 0 5px; background: var(--brand-soft); color: var(--brand);
+}
+
+.ko-promote {
+  display: none; border-radius: 10px; padding: 9px 13px; margin-bottom: 10px; font-size: 12.5px;
+  border: 1px solid #b9d9d4; background: var(--brand-soft); color: #0b5a54;
+}
+.ko-promote.show { display: block; }
+.ko-promote.bad-clear { border-color: #e7cf9f; background: var(--amber-soft); color: #7c5210; }
+
+.ko-picklist { display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.ko-picklist label { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+.ko-picklist .rank { font-family: Consolas, monospace; color: var(--ink-soft); min-width: 26px; }
+.ko-picklist .grp { font-size: 10px; border-radius: 6px; padding: 0 5px; background: var(--brand-soft); color: var(--brand); }

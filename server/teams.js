@@ -1,8 +1,9 @@
 const crypto = require('crypto');
-const { load, save, MAX_TEAM_NAME, MAX_SHORT_NAME, MAX_NOTE, MAX_TEAMS, TEAM_STATUS } = require('./store');
+const { load, save, MAX_TEAM_NAME, MAX_SHORT_NAME, MAX_NOTE, MAX_GROUP, MAX_TEAMS, TEAM_STATUS } = require('./store');
 const { ApiError, pickText, isBlank } = require('./errors');
 
 const SHORT_PATTERN = /^[A-Z]{2,4}$/;
+const GROUP_PATTERN = /^[A-Za-z0-9]{1,4}$/;
 
 function validatePayload(input, data, selfId) {
   const source = input && typeof input === 'object' ? input : {};
@@ -40,6 +41,12 @@ function validatePayload(input, data, selfId) {
     throw new ApiError(409, 'SEED_RANK_DUPLICATED', `第 ${seedRank} 档已经有人占着了`, 'seedRank');
   }
 
+  // 分组用于淘汰赛抽签的"同组首轮回避"，可以留空，填了就限一到四个字母或数字
+  const group = pickText(source.group).toUpperCase();
+  if (group && !GROUP_PATTERN.test(group)) {
+    throw new ApiError(400, 'GROUP_INVALID', `分组用一到四个字母或数字，例如 A，最多 ${MAX_GROUP} 个字符`, 'group');
+  }
+
   const status = pickText(source.status) || '参赛';
   if (!TEAM_STATUS.includes(status)) {
     throw new ApiError(400, 'STATUS_INVALID', '状态只能填参赛或者退赛', 'status');
@@ -49,7 +56,7 @@ function validatePayload(input, data, selfId) {
     throw new ApiError(400, 'NOTE_TOO_LONG', `备注不能超过 ${MAX_NOTE} 个字`, 'note');
   }
 
-  return { name, shortName, city, venueId, seedRank, status, note: pickText(source.note) };
+  return { name, shortName, city, venueId, seedRank, group, status, note: pickText(source.note) };
 }
 
 function listTeams(options) {

@@ -22,6 +22,7 @@
         <button type="button" class="nav-item" data-view="teams"><span>球队</span><em id="nav-teams">0</em></button>
         <button type="button" class="nav-item" data-view="venues"><span>场地</span><em id="nav-venues">0</em></button>
         <button type="button" class="nav-item" data-view="matches"><span>赛程</span><em id="nav-matches">0</em></button>
+        <button type="button" class="nav-item" data-view="knockout"><span>淘汰赛</span><em>签表</em></button>
         <button type="button" class="nav-item" data-view="table"><span>积分榜</span><em>名次</em></button>
       </nav>
 
@@ -70,7 +71,7 @@
           <table class="grid">
             <thead>
               <tr>
-                <th>档位</th><th>球队</th><th>简称</th><th>城市</th><th>主场</th><th>场次</th><th>状态</th><th>备注</th><th></th>
+                <th>档位</th><th>球队</th><th>简称</th><th>分组</th><th>城市</th><th>主场</th><th>场次</th><th>状态</th><th>备注</th><th></th>
               </tr>
             </thead>
             <tbody id="team-rows"></tbody>
@@ -112,6 +113,25 @@
           </table>
           <p class="empty" id="match-empty">没有符合条件的赛程</p>
         </article>
+      </section>
+
+      <section class="view" id="view-knockout">
+        <div class="toolbar" id="ko-toolbar">
+          <span class="hint" id="ko-hint"></span>
+        </div>
+        <div id="ko-rules" class="ko-rules"></div>
+        <div id="ko-champion" class="ko-champion"></div>
+        <div id="ko-bracket-scroll" class="ko-scroll">
+          <div class="bracket" id="ko-bracket"></div>
+        </div>
+        <div class="card" id="ko-entrants-card" style="margin-top:14px">
+          <header class="card-head"><h2>参赛名单与种子位</h2><span class="hint">按档位排序，分组用于首轮回避</span></header>
+          <div class="ko-entrants" id="ko-entrants"></div>
+        </div>
+        <div class="card" id="ko-empty" style="margin-top:14px">
+          <p class="muted" style="margin:4px 0 12px">还没有淘汰赛签表。按参赛队数与档位抽签后，这里会画出每一轮的对阵与晋级连线。</p>
+          <button type="button" class="primary" id="ko-draw-empty">开始抽签</button>
+        </div>
       </section>
 
       <section class="view" id="view-table">

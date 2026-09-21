@@ -120,6 +120,37 @@ app.get('/api/standings', (req, res) => {
   res.json(api.computeTable({ keyword: api.readQuery(req.query, 'keyword') }));
 });
 
+// 淘汰赛签表：抽签、查看、登记比分（胜者自动晋级）、整张清空
+app.get('/api/knockout', (_req, res) => {
+  const state = api.getKnockoutState();
+  if (!state) return res.status(404).json({ error: { code: 'KNOCKOUT_NOT_FOUND', message: '还没有生成淘汰赛签表，请先抽签', field: '' } });
+  return res.json(state);
+});
+
+app.post('/api/knockout/generate', (req, res) => {
+  try {
+    res.status(201).json(api.generateKnockout(req.body));
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.post('/api/knockout/matches/:id/result', (req, res) => {
+  try {
+    res.json(api.recordKnockoutResult(req.params.id, req.body || {}));
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.delete('/api/knockout', (req, res) => {
+  try {
+    res.json(api.deleteKnockout());
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
 app.use('/api', (_req, res) => {
   res.status(404).json({ error: { code: 'API_NOT_FOUND', message: '接口不存在', field: '' } });
 });
